@@ -2,9 +2,9 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:learnez/app/welcome/bloc/welcome_bloc.dart';
-import 'package:learnez/bloc/ui/counter_screen.dart';
+import 'package:learnez/constants/colors.dart';
 import 'package:learnez/constants/images.dart';
+import 'package:learnez/pages/welcome/bloc/welcome_bloc.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
@@ -63,7 +63,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       ),
                     ],
                   ),
-                  Positioned(
+                  Positioned( 
                     bottom: 70.h,
                     child: DotsIndicator(
                       position: state.page,
@@ -112,7 +112,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             title,
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: Colors.black,
+              color: AppColors.primaryText,
               fontWeight: FontWeight.bold,
               fontSize: 20.sp,
             ),
@@ -122,8 +122,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             child: Text(
               subtitle,
               textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.black.withOpacity(0.5),
+              style: const TextStyle(
+                color: AppColors.primaryThreeElementText,
               ),
             ),
           ),
@@ -136,10 +136,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   curve: Curves.easeInExpo,
                 );
               } else {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => const MyHomePage(),
-                  ),
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                  'signIn',
+                  (route) => false,
                 );
               }
             },
@@ -150,25 +149,26 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               width: 325.w,
               height: 45.h,
               decoration: BoxDecoration(
-                color: Colors.black,
+                color: AppColors.primaryText,
                 borderRadius: BorderRadius.all(
                   Radius.circular(15.w),
                 ),
-                boxShadow: const [
-                  BoxShadow(
-                    blurRadius: 1,
-                    spreadRadius: 2,
-                    offset: Offset(2, 3),
-                    color: Color.fromARGB(255, 103, 102, 102),
-                  ),
-                ],
+                // boxShadow: const [
+                //   BoxShadow(
+                //     blurRadius: 1,
+                //     spreadRadius: 2,
+                //     offset: Offset(2, 3),
+                //     color: AppColors.primaryFourElementText,
+                //   ),
+                // ],
               ),
               child: Center(
                 child: Text(
                   buttonText,
-                  style: const TextStyle(
+                  style:   TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w700,
+                    fontSize: 14.sp
                   ),
                 ),
               ),

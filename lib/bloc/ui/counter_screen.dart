@@ -13,11 +13,11 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context2) {
     print('ui build once');
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: Theme.of(context2).colorScheme.inversePrimary,
         title: const Text('Counter'),
       ),
       body: Center(
@@ -27,27 +27,18 @@ class _MyHomePageState extends State<MyHomePage> {
             const Text(
               'You have pushed the button this many times:',
             ),
-            BlocConsumer<CounterBloc, CounterState>(
-              listener: (context, state) {
-                if (state.counter.isEven) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Hey it is even Number')));
-                } else if (state.counter.isOdd) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Hey it is Odd Number')));
-                }
-              },
+            BlocBuilder<CounterBloc, CounterState>(
               builder: (context, state) {
                 print('ui being rebuild');
                 if (state.counter == 0) {
                   return Text(
                     'Click Button to Increase counter value',
-                    style: Theme.of(context).textTheme.headlineMedium,
+                    style: Theme.of(context2).textTheme.headlineMedium,
                   );
                 } else {
                   return Text(
                     state.counter.toString(),
-                    style: Theme.of(context).textTheme.headlineMedium,
+                    style: Theme.of(context2).textTheme.headlineMedium,
                   );
                 }
               },
