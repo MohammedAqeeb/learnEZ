@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:learnez/constants/colors.dart';
 import 'package:learnez/constants/images.dart';
+import 'package:learnez/pages/sign_up/bloc/sign_up_bloc.dart';
 import 'package:learnez/pages/welcome/bloc/welcome_bloc.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -17,75 +18,80 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   PageController pageController = PageController(initialPage: 0);
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: Scaffold(
-        body: BlocBuilder<WelcomeBloc, WelcomeState>(
-          builder: (context, state) {
-            return Container(
-              margin: EdgeInsets.only(
-                top: 25.h,
-              ),
-              width: 375.w,
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  PageView(
-                    controller: pageController,
-                    onPageChanged: (index) {
-                      state.page = index;
-                      BlocProvider.of<WelcomeBloc>(context).add(WelcomeEvent());
-                    },
+    return BlocBuilder<SignUpBloc, SignUpState>(
+      builder: (context, state) {
+        return Container(
+          color: Colors.white,
+          child: Scaffold(
+            body: BlocBuilder<WelcomeBloc, WelcomeState>(
+              builder: (context, state) {
+                return Container(
+                  margin: EdgeInsets.only(
+                    top: 25.h,
+                  ),
+                  width: 375.w,
+                  child: Stack(
+                    alignment: Alignment.center,
                     children: [
-                      buildPages(
-                        index: 1,
-                        image: onBoardImage1,
-                        subtitle:
-                            'Empowering Your Learning Journey with a World of Knowledge and Opportunities',
-                        title: 'Welcome to LearnEZ',
-                        buttonText: 'Next',
+                      PageView(
+                        controller: pageController,
+                        onPageChanged: (index) {
+                          state.page = index;
+                          BlocProvider.of<WelcomeBloc>(context)
+                              .add(WelcomeEvent());
+                        },
+                        children: [
+                          buildPages(
+                            index: 1,
+                            image: onBoardImage1,
+                            subtitle:
+                                'Empowering Your Learning Journey with a World of Knowledge and Opportunities',
+                            title: 'Welcome to LearnEZ',
+                            buttonText: 'Next',
+                          ),
+                          buildPages(
+                            index: 2,
+                            image: onBoardImage2,
+                            subtitle:
+                                'Unlock a Wealth of Knowledge and Expand Your Horizons with LearnEZ"',
+                            title: 'Discover New Horizons',
+                            buttonText: 'Next',
+                          ),
+                          buildPages(
+                            index: 3,
+                            image: onBoardImage3,
+                            title: 'Elevate Your Learning',
+                            subtitle:
+                                'Embark on Your Journey to Educational Excellence and Personal Growth with LearnEZ',
+                            buttonText: 'Get Started',
+                          ),
+                        ],
                       ),
-                      buildPages(
-                        index: 2,
-                        image: onBoardImage2,
-                        subtitle:
-                            'Unlock a Wealth of Knowledge and Expand Your Horizons with LearnEZ"',
-                        title: 'Discover New Horizons',
-                        buttonText: 'Next',
-                      ),
-                      buildPages(
-                        index: 3,
-                        image: onBoardImage3,
-                        title: 'Elevate Your Learning',
-                        subtitle:
-                            'Embark on Your Journey to Educational Excellence and Personal Growth with LearnEZ',
-                        buttonText: 'Get Started',
+                      Positioned(
+                        bottom: 70.h,
+                        child: DotsIndicator(
+                          position: state.page,
+                          dotsCount: 3,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          decorator: DotsDecorator(
+                            activeColor: Colors.black,
+                            color: Colors.grey,
+                            activeSize: Size(10.w, 10.h),
+                            size: const Size.square(8.0),
+                            activeShape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10.h),
+                            ),
+                          ),
+                        ),
                       ),
                     ],
                   ),
-                  Positioned( 
-                    bottom: 70.h,
-                    child: DotsIndicator(
-                      position: state.page,
-                      dotsCount: 3,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      decorator: DotsDecorator(
-                        activeColor: Colors.black,
-                        color: Colors.grey,
-                        activeSize: Size(10.w, 10.h),
-                        size: const Size.square(8.0),
-                        activeShape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.h),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            );
-          },
-        ),
-      ),
+                );
+              },
+            ),
+          ),
+        );
+      },
     );
   }
 
@@ -165,11 +171,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               child: Center(
                 child: Text(
                   buttonText,
-                  style:   TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w700,
-                    fontSize: 14.sp
-                  ),
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
+                      fontSize: 14.sp),
                 ),
               ),
             ),

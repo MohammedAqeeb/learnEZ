@@ -3,11 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:learnez/constants/colors.dart';
 import 'package:learnez/constants/images.dart';
 
-AppBar buildAppBar() {
+AppBar buildAppBar(String titleName) {
   return AppBar(
     centerTitle: true,
     title: Text(
-      'Log In',
+      titleName,
       style: TextStyle(
         fontSize: 16.sp,
         color: AppColors.primaryText,
@@ -63,7 +63,12 @@ Widget buildResusableText(String text) {
   );
 }
 
-Widget buildTextField(String hintText, String textInputType, String iconName) {
+Widget buildTextField(
+  String hintText,
+  String textInputType,
+  String iconName,
+  void Function(String value)? fun,
+) {
   return Container(
     width: 325.w,
     height: 50.h,
@@ -88,6 +93,7 @@ Widget buildTextField(String hintText, String textInputType, String iconName) {
           width: 270.w,
           height: 50.h,
           child: TextField(
+            onChanged: (value) => fun!(value),
             decoration: InputDecoration(
               hintText: hintText,
               hintStyle: const TextStyle(
@@ -124,6 +130,7 @@ Widget buildTextField(String hintText, String textInputType, String iconName) {
 Widget buildLoginButton(
   String buttonName,
   String buttonType,
+  void Function()? fun,
 ) {
   return Container(
     width: 325.w,
@@ -139,7 +146,7 @@ Widget buildLoginButton(
           borderRadius: BorderRadius.circular(16.w),
         ),
       ),
-      onPressed: () {},
+      onPressed: fun,
       child: Text(
         buttonName,
         style: TextStyle(
