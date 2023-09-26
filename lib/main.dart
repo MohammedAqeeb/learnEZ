@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         home: ScreenUtilInit(
-          builder: (context, widget) => const HomeScreen(),
+          builder: (context, widget) => const WelcomeScreen(),
         ),
         routes: {
           'signIn': (context) => const SignInScreen(),

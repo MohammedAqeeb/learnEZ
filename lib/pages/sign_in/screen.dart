@@ -17,7 +17,7 @@ class SignInScreen extends StatefulWidget {
 class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SigninBloc, SigninState>(
+    return BlocBuilder<SignInBloc, SigninState>(
       builder: (context, state) {
         return Container(
           color: Colors.white,
@@ -31,7 +31,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   children: [
                     buildSocialMediaIcon(context),
                     Center(
-                        child: buildResusableText(
+                        child: buildReuseableText(
                             'Or use your email account to login')),
                     Container(
                       padding:
@@ -39,7 +39,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          buildResusableText('Email'),
+                          buildReuseableText('Email'),
                           SizedBox(height: 10.h),
                           buildTextField(
                             'Enter Your Email Address',
@@ -47,12 +47,12 @@ class _SignInScreenState extends State<SignInScreen> {
                             userIcon,
                             (email) {
                               context
-                                  .read<SigninBloc>()
+                                  .read<SignInBloc>()
                                   .add(SignInEmailEvent(email: email));
                             },
                           ),
                           SizedBox(height: 14.h),
-                          buildResusableText('Password'),
+                          buildReuseableText('Password'),
                           SizedBox(height: 10.h),
                           buildTextField(
                             'Enter Your Password',
@@ -60,7 +60,7 @@ class _SignInScreenState extends State<SignInScreen> {
                             lockIcon,
                             (password) {
                               context
-                                  .read<SigninBloc>()
+                                  .read<SignInBloc>()
                                   .add(SignInPasswordEvent(password: password));
                             },
                           ),

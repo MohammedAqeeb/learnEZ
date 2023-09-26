@@ -52,7 +52,7 @@ GestureDetector buildResusableIcons(String iconName) {
   );
 }
 
-Widget buildResusableText(String text) {
+Widget buildReuseableText(String text) {
   return Text(
     text,
     style: TextStyle(

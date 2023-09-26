@@ -3,8 +3,8 @@ import 'package:bloc/bloc.dart';
 part 'signin_event.dart';
 part 'signin_state.dart';
 
-class SigninBloc extends Bloc<SigninEvent, SigninState> {
-  SigninBloc() : super(const SigninState()) {
+class SignInBloc extends Bloc<SigninEvent, SigninState> {
+  SignInBloc() : super(const SigninState()) {
     on<SignInEmailEvent>((event, emit) {
       print('current password ${event.email}');
       emit(state.copyWith(email: event.email));

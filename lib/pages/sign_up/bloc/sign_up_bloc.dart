@@ -29,5 +29,5 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
 
   void _confirmPsdEvent(
           Emitter<SignUpState> emit, SignUpUserConfirmPasswordEvent event) =>
-      emit(state.copyWith(confirmPassword: event.confirePassword));
+      emit(state.copyWith(confirmPassword: event.confirmPassword));
 }

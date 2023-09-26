@@ -11,7 +11,7 @@ class SignInController {
   Future<void> handleSignIn(String type) async {
     try {
       if (type == 'email') {
-        final state = context.read<SigninBloc>().state;
+        final state = context.read<SignInBloc>().state;
 
         final email = state.email;
 
@@ -34,7 +34,7 @@ class SignInController {
           }
 
           if (!firebaseAuth.user!.emailVerified) {
-            toastWidget(msg: 'Verfiy your email address');
+            toastWidget(msg: 'Verify your email address');
           }
 
           var user = firebaseAuth.user;

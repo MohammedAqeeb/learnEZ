@@ -30,7 +30,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 Container(
                   margin: EdgeInsets.only(top: 32.h),
                   child: Center(
-                    child: buildResusableText('Enter your details to sign up'),
+                    child: buildReuseableText('Enter your details to sign up'),
                   ),
                 ),
                 Container(
@@ -38,7 +38,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      buildResusableText('User Name'),
+                      buildReuseableText('User Name'),
                       SizedBox(height: 10.h),
                       buildTextField(
                         'Enter Your name',
@@ -51,7 +51,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         },
                       ),
                       SizedBox(height: 14.h),
-                      buildResusableText('Email'),
+                      buildReuseableText('Email'),
                       SizedBox(height: 10.h),
                       buildTextField(
                         'Enter Your Email Address',
@@ -62,7 +62,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             .add(SignUpUserEmailEvent(email: email)),
                       ),
                       SizedBox(height: 14.h),
-                      buildResusableText('Password'),
+                      buildReuseableText('Password'),
                       SizedBox(height: 10.h),
                       buildTextField(
                         'Enter Your Password',
@@ -75,7 +75,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         },
                       ),
                       SizedBox(height: 10.h),
-                      buildResusableText('Confirm Password'),
+                      buildReuseableText('Confirm Password'),
                       SizedBox(height: 10.h),
                       buildTextField(
                         'Confirm Password',
@@ -84,13 +84,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         (confirm) {
                           context.read<SignUpBloc>().add(
                               SignUpUserConfirmPasswordEvent(
-                                  confirePassword: confirm));
+                                  confirmPassword: confirm));
                         },
                       ),
                       Container(
                         margin: EdgeInsets.only(top: 12.h),
                         child: Center(
-                          child: buildResusableText(
+                          child: buildReuseableText(
                             'By creating account you agree with our terms & conditions',
                           ),
                         ),

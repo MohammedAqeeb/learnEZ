@@ -20,6 +20,6 @@ class SignUpUserPasswordEvent extends SignUpEvent {
 }
 
 class SignUpUserConfirmPasswordEvent extends SignUpEvent {
-  final String confirePassword;
-  SignUpUserConfirmPasswordEvent({required this.confirePassword});
+  final String confirmPassword;
+  SignUpUserConfirmPasswordEvent({required this.confirmPassword});
 }
