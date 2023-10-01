@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:learnez/constants/constant.dart';
+import 'package:learnez/constants/global.dart';
 import 'package:learnez/pages/sign_in/bloc/signin_bloc.dart';
 import 'package:learnez/widgets/toast.dart';
 
@@ -40,6 +42,10 @@ class SignInController {
           var user = firebaseAuth.user;
 
           if (user != null) {
+            Global.storageService.setUserId(Constant.userId, true);
+            // ignore: use_build_context_synchronously
+            Navigator.pushNamedAndRemoveUntil(
+                context, 'home', (route) => false);
           } else {}
         } on FirebaseAuthException catch (e) {
           return toastWidget(msg: e.toString());

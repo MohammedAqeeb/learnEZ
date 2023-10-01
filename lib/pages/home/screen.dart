@@ -26,125 +26,151 @@ class _HomeScreenState extends State<HomeScreen> {
           child: SafeArea(
             child: Scaffold(
               backgroundColor: Colors.white,
-              appBar: AppBar(
-                title: const Text('data'),
-              ),
+              appBar: buildAppBar(),
               body: bottomNavigationItem(state.index),
-              bottomNavigationBar: Container(
-                width: 375.w,
-                height: 50.h,
-                decoration: BoxDecoration(
-                  color: AppColors.primarySecondaryElementText,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(20.h),
-                    topRight: Radius.circular(20.h),
-                  ),
-                  boxShadow: [
-                    BoxShadow(
-                      color: AppColors.primaryFourElementText.withOpacity(0.15),
-                      spreadRadius: 1,
-                      blurRadius: 2,
-                    )
-                  ],
-                ),
-                child: BottomNavigationBar(
-                  elevation: 0,
-                  showSelectedLabels: false,
-                  showUnselectedLabels: false,
-                  type: BottomNavigationBarType.fixed,
-                  currentIndex: state.index,
-                  backgroundColor: Colors.white,
-                  onTap: (value) => context.read<HomePageBloc>().add(
-                        HomePageTriggerEvent(value),
-                      ),
-                  items: [
-                    BottomNavigationBarItem(
-                      label: 'Home',
-                      icon: SizedBox(
-                        width: 15.w,
-                        height: 15.h,
-                        child: Image.asset(homeIcon),
-                      ),
-                      activeIcon: SizedBox(
-                        width: 18.w,
-                        height: 18.h,
-                        child: Image.asset(
-                          homeIcon,
-                          color: AppColors.primaryText,
-                        ),
-                      ),
-                    ),
-                    BottomNavigationBarItem(
-                      label: 'Search',
-                      icon: SizedBox(
-                        width: 15.w,
-                        height: 15.h,
-                        child: Image.asset(searchIcon),
-                      ),
-                      activeIcon: SizedBox(
-                        width: 18.w,
-                        height: 18.h,
-                        child: Image.asset(
-                          searchIcon,
-                          color: AppColors.primaryText,
-                        ),
-                      ),
-                    ),
-                    BottomNavigationBarItem(
-                      label: 'course',
-                      icon: SizedBox(
-                        width: 15.w,
-                        height: 15.h,
-                        child: Image.asset(playcircle1Icon),
-                      ),
-                      activeIcon: SizedBox(
-                        width: 18.w,
-                        height: 18.h,
-                        child: Image.asset(
-                          playcircle1Icon,
-                          color: AppColors.primaryText,
-                        ),
-                      ),
-                    ),
-                    BottomNavigationBarItem(
-                      label: 'message',
-                      icon: SizedBox(
-                        width: 15.w,
-                        height: 15.h,
-                        child: Image.asset(messageIcon),
-                      ),
-                      activeIcon: SizedBox(
-                        width: 18.w,
-                        height: 18.h,
-                        child: Image.asset(
-                          messageIcon,
-                          color: AppColors.primaryText,
-                        ),
-                      ),
-                    ),
-                    BottomNavigationBarItem(
-                      label: 'profile',
-                      icon: SizedBox(
-                        width: 15.w,
-                        height: 15.h,
-                        child: Image.asset(profileIcon),
-                      ),
-                      activeIcon: SizedBox(
-                        width: 18.w,
-                        height: 18.h,
-                        child: Image.asset(
-                          profileIcon,
-                          color: AppColors.primaryText,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              bottomNavigationBar: buildBottomNavigation(state, context),
             ),
           ),
         );
       },
+    );
+  }
+
+  AppBar buildAppBar() {
+    return AppBar(
+      title: Container(
+        margin: EdgeInsets.only(left: 6.w, right: 6.w),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(
+              width: 20.w,
+              height: 20.h,
+              child: Image.asset(menuIcon),
+            ),
+            SizedBox(
+              width: 20.w,
+              height: 20.h,
+              child: Image.asset(profileIcon1),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget buildBottomNavigation(HomePageState state, BuildContext context) {
+    return Container(
+      width: 375.w,
+      height: 50.h,
+      decoration: BoxDecoration(
+        color: AppColors.primarySecondaryElementText,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(20.h),
+          topRight: Radius.circular(20.h),
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.primaryFourElementText.withOpacity(0.15),
+            spreadRadius: 1,
+            blurRadius: 2,
+          )
+        ],
+      ),
+      child: BottomNavigationBar(
+        elevation: 0,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        type: BottomNavigationBarType.fixed,
+        currentIndex: state.index,
+        backgroundColor: Colors.white,
+        onTap: (value) => context.read<HomePageBloc>().add(
+              HomePageTriggerEvent(value),
+            ),
+        items: [
+          BottomNavigationBarItem(
+            label: 'Home',
+            icon: SizedBox(
+              width: 15.w,
+              height: 15.h,
+              child: Image.asset(homeIcon),
+            ),
+            activeIcon: SizedBox(
+              width: 18.w,
+              height: 18.h,
+              child: Image.asset(
+                homeIcon,
+                color: AppColors.primaryText,
+              ),
+            ),
+          ),
+          BottomNavigationBarItem(
+            label: 'Search',
+            icon: SizedBox(
+              width: 15.w,
+              height: 15.h,
+              child: Image.asset(searchIcon),
+            ),
+            activeIcon: SizedBox(
+              width: 18.w,
+              height: 18.h,
+              child: Image.asset(
+                searchIcon,
+                color: AppColors.primaryText,
+              ),
+            ),
+          ),
+          BottomNavigationBarItem(
+            label: 'course',
+            icon: SizedBox(
+              width: 15.w,
+              height: 15.h,
+              child: Image.asset(playCircle1Icon),
+            ),
+            activeIcon: SizedBox(
+              width: 18.w,
+              height: 18.h,
+              child: Image.asset(
+                playCircle1Icon,
+                color: AppColors.primaryText,
+              ),
+            ),
+          ),
+          BottomNavigationBarItem(
+            label: 'message',
+            icon: SizedBox(
+              width: 15.w,
+              height: 15.h,
+              child: Image.asset(messageIcon),
+            ),
+            activeIcon: SizedBox(
+              width: 18.w,
+              height: 18.h,
+              child: Image.asset(
+                messageIcon,
+                color: AppColors.primaryText,
+              ),
+            ),
+          ),
+          BottomNavigationBarItem(
+            label: 'profile',
+            icon: SizedBox(
+              width: 15.w,
+              height: 15.h,
+              child: Image.asset(profileIcon),
+            ),
+            activeIcon: SizedBox(
+              width: 18.w,
+              height: 18.h,
+              child: Image.asset(
+                profileIcon,
+                color: AppColors.primaryText,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

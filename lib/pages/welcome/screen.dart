@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:learnez/constants/colors.dart';
+import 'package:learnez/constants/constant.dart';
+import 'package:learnez/constants/global.dart';
 import 'package:learnez/constants/images.dart';
 import 'package:learnez/pages/sign_up/bloc/sign_up_bloc.dart';
 import 'package:learnez/pages/welcome/bloc/welcome_bloc.dart';
@@ -142,6 +144,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   curve: Curves.easeInExpo,
                 );
               } else {
+                Global.storageService
+                    .setDeviceOpened(Constant.deviceOpenedFirstTime, true);
+
                 Navigator.of(context).pushNamedAndRemoveUntil(
                   'signIn',
                   (route) => false,
