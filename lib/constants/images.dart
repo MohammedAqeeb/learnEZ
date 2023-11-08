@@ -31,3 +31,9 @@ const String searchIcon2 = 'assets/icons/search2.png';
 const String optionIcon = 'assets/icons/options.png';
 
 const String profileIcon1 = 'assets/icons/01.png';
+
+const String sliderArtImage = 'assets/icons/art.png';
+
+const String sliderArtImage1 = 'assets/icons/image(4).png';
+
+const String sliderArtImage2 = 'assets/icons/Image(2).png';

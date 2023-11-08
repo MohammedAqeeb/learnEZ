@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:learnez/constants/colors.dart';
 import 'package:learnez/constants/images.dart';
-import 'package:learnez/pages/home/bloc/home_page_bloc.dart';
+import 'package:learnez/pages/application/bloc/application_bloc.dart';
 
 import 'widgets/bottom_navigation.dart';
 
@@ -19,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomePageBloc, HomePageState>(
+    return BlocBuilder<ApplicationBloc, ApplicationState>(
       builder: (context, state) {
         return Container(
           color: Colors.white,
@@ -60,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget buildBottomNavigation(HomePageState state, BuildContext context) {
+  Widget buildBottomNavigation(ApplicationState state, BuildContext context) {
     return Container(
       width: 375.w,
       height: 50.h,
@@ -85,8 +85,8 @@ class _HomeScreenState extends State<HomeScreen> {
         type: BottomNavigationBarType.fixed,
         currentIndex: state.index,
         backgroundColor: Colors.white,
-        onTap: (value) => context.read<HomePageBloc>().add(
-              HomePageTriggerEvent(value),
+        onTap: (value) => context.read<ApplicationBloc>().add(
+              AppBottomNavigationEvent(value),
             ),
         items: [
           BottomNavigationBarItem(
