@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:learnez/constants/colors.dart';
 import 'package:learnez/pages/home/widgets/home_page_screen.dart';
+import 'package:learnez/pages/profile/profile_screen.dart';
 
 Widget bottomNavigationItem(int index) {
   List<Widget> widgets = [
@@ -15,9 +16,7 @@ Widget bottomNavigationItem(int index) {
     const Center(
       child: Text('CHAT SCREEN'),
     ),
-    const Center(
-      child: Text('Profile SCREEN'),
-    ),
+    const ProfileScreen(),
   ];
 
   return widgets[index];

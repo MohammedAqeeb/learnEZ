@@ -14,29 +14,57 @@ class HomePageScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomePageBloc, HomePageState>(
-      builder: (context, state) {
-        return Container(
-          margin: EdgeInsets.symmetric(vertical: 0, horizontal: 16.w),
-          child: CustomScrollView(
-            slivers: [
-              SliverList(
-                delegate: SliverChildListDelegate(
-                  [
-                    buildWelcomeText(),
-                    // SizedBox(height: 10.h),
-                    buildSearchView(),
-                    _buildSliderView(context, state),
-                    buildMenuView(),
-                    buildMenuOption(),
-                  ],
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: buildAppBar(),
+      body: BlocBuilder<HomePageBloc, HomePageState>(
+        builder: (context, state) {
+          return Container(
+            margin: EdgeInsets.symmetric(vertical: 0, horizontal: 16.w),
+            child: CustomScrollView(
+              slivers: [
+                SliverList(
+                  delegate: SliverChildListDelegate(
+                    [
+                      buildWelcomeText(),
+                      // SizedBox(height: 10.h),
+                      buildSearchView(),
+                      _buildSliderView(context, state),
+                      buildMenuView(),
+                      buildMenuOption(),
+                    ],
+                  ),
                 ),
-              ),
-              buildGridView(),
-            ],
-          ),
-        );
-      },
+                buildGridView(),
+              ],
+            ),
+          );
+        },
+      ),
+    );
+  }
+
+  AppBar buildAppBar() {
+    return AppBar(
+      title: Container(
+        margin: EdgeInsets.only(left: 6.w, right: 6.w),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(
+              width: 20.w,
+              height: 20.h,
+              child: Image.asset(menuIcon),
+            ),
+            SizedBox(
+              width: 20.w,
+              height: 20.h,
+              child: Image.asset(profileIcon1),
+            ),
+          ],
+        ),
+      ),
     );
   }
 
@@ -170,22 +198,58 @@ class HomePageScreen extends StatelessWidget {
     return SliverPadding(
       padding: EdgeInsets.symmetric(horizontal: 0.w, vertical: 18.h),
       sliver: SliverGrid(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            mainAxisSpacing: 15,
+            crossAxisSpacing: 15,
+            childAspectRatio: 1.5),
         delegate: SliverChildBuilderDelegate(
           (context, index) {
-            return Container(
-              alignment: Alignment.center,
-              color: Colors.teal[100 * (index % 9)],
-              child: Text('image $index'),
-            );
+            return buildCourseGrid();
           },
-          childCount: 10,
+          childCount: 4,
         ),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          mainAxisSpacing: 15,
-          crossAxisSpacing: 15,
-          childAspectRatio: 2.0,
+      ),
+    );
+  }
+
+  Widget buildCourseGrid() {
+    return Container(
+      padding: EdgeInsets.only(left: 6.h, bottom: 6.h),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(15.r),
+        image: const DecorationImage(
+          fit: BoxFit.fill,
+          image: AssetImage(sliderArtImage2),
         ),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Text(
+            'Best Course for IT',
+            maxLines: 1,
+            softWrap: false,
+            overflow: TextOverflow.fade,
+            textAlign: TextAlign.left,
+            style: TextStyle(
+              fontSize: 11.sp,
+              color: AppColors.primaryElementText,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          Text(
+            'Top company requirement',
+            maxLines: 1,
+            softWrap: false,
+            style: TextStyle(
+              overflow: TextOverflow.fade,
+              fontSize: 11.sp,
+              color: AppColors.primaryFourElementText,
+            ),
+          ),
+        ],
       ),
     );
   }

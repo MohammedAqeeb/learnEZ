@@ -25,4 +25,8 @@ class StorageService {
   bool getUserId() {
     return sharedPreferences.getBool(Constant.userId) ?? false;
   }
+
+  Future<bool> removeKey(String key) {
+    return sharedPreferences.remove(key);
+  }
 }

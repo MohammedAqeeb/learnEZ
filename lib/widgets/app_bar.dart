@@ -31,15 +31,15 @@ Widget buildSocialMediaIcon(BuildContext context) {
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        buildResusableIcons(googleIcon),
-        buildResusableIcons(appleIcon),
-        buildResusableIcons(facebookIcon),
+        buildReusableIcons(googleIcon),
+        buildReusableIcons(appleIcon),
+        buildReusableIcons(facebookIcon),
       ],
     ),
   );
 }
 
-GestureDetector buildResusableIcons(String iconName) {
+GestureDetector buildReusableIcons(String iconName) {
   return GestureDetector(
     onTap: () {},
     child: SizedBox(

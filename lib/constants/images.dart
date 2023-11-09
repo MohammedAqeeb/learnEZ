@@ -37,3 +37,20 @@ const String sliderArtImage = 'assets/icons/art.png';
 const String sliderArtImage1 = 'assets/icons/image(4).png';
 
 const String sliderArtImage2 = 'assets/icons/Image(2).png';
+
+const String moreVertical = 'assets/icons/more-vertical.png';
+
+const String profileImg = 'assets/icons/headpic.png';
+
+const String editIcon = 'assets/icons/edit_3.png';
+
+const String settingsIcon = 'assets/icons/settings.png';
+
+const String awardIcon = 'assets/icons/award.png';
+
+const String creditCardIcon = 'assets/icons/credit-card.png';
+
+const String heartIcon = 'assets/icons/heart(1).png';
+
+const String cubeIcon = 'assets/icons/cube.png';
+const String logoutIcon = 'assets/icons/Logout.png';

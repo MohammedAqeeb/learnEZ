@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
             backgroundColor: Colors.white,
           ),
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
+          useMaterial3: false,
         ),
         home: ScreenUtilInit(
           builder: (context, widget) {

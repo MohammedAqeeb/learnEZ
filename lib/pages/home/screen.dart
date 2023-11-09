@@ -26,37 +26,12 @@ class _HomeScreenState extends State<HomeScreen> {
           child: SafeArea(
             child: Scaffold(
               backgroundColor: Colors.white,
-              appBar: buildAppBar(),
               body: bottomNavigationItem(state.index),
               bottomNavigationBar: buildBottomNavigation(state, context),
             ),
           ),
         );
       },
-    );
-  }
-
-  AppBar buildAppBar() {
-    return AppBar(
-      title: Container(
-        margin: EdgeInsets.only(left: 6.w, right: 6.w),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SizedBox(
-              width: 20.w,
-              height: 20.h,
-              child: Image.asset(menuIcon),
-            ),
-            SizedBox(
-              width: 20.w,
-              height: 20.h,
-              child: Image.asset(profileIcon1),
-            ),
-          ],
-        ),
-      ),
     );
   }
 
