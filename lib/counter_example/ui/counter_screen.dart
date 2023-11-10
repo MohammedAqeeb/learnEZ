@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:learnez/bloc/counter_bloc.dart';
+import 'package:learnez/counter_example/counter_bloc.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({

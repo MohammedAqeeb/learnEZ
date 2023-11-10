@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:learnez/bloc/counter_bloc.dart';
+import 'package:learnez/counter_example/counter_bloc.dart';
 import 'package:learnez/pages/application/bloc/application_bloc.dart';
 import 'package:learnez/pages/home/bloc/home_page_bloc.dart';
 import 'package:learnez/pages/sign_in/bloc/signin_bloc.dart';
